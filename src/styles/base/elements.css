@@ -1,0 +1,102 @@
+﻿:any-link {
+  color: inherit;
+}
+
+:visited:not(:has(img, svg, picture)) {
+  color: oklch(from currentColor l c h / 0.65);
+}
+
+@supports selector(::target-text) {
+
+  ::target-text {
+    background-color: var(--primary-base);
+    color: contrast-color(var(--primary-base));
+  }
+}
+
+::selection {
+  --selection-bg: color-mix(in oklch, var(--surface-base) 70%, var(--accent-base) 30%);
+  background-color: var(--selection-bg);
+  color: contrast-color(var(--selection-bg));
+}
+
+:is(img, svg:not(:has(text))) {
+  user-select: none;
+  print-color-adjust: exact;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+svg {
+  display: inline-block;
+  overflow: visible;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+  vertical-align: middle;
+
+  /* Targets inner geometries for hardware-accelerated transforms and strokes */
+  & :is(path, rect, circle, line, polygon, polyline) {
+    transform-box: fill-box;
+    transform-origin: center;
+    vector-effect: non-scaling-stroke;
+  }
+
+  &:not([fill]) {
+    fill: none;
+  }
+}
+
+/* Interactive Elements */
+:is(a, button, select, label[for], input:is([type="checkbox"], [type="radio"]), 
+    [role="button"], [data-ui="btn"], [data-ui="link"]) {
+
+  &:not(input:is([type="checkbox"], [type="radio"])) {
+    cursor: pointer; 
+  }
+
+  &:not(label, select):focus-visible {
+    outline: var(--px-1) solid var(--accent-base);
+    outline-offset: var(--px-3);
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+[popover] {
+  border: none; 
+}
+
+html {
+  overflow-inline: clip; 
+  scroll-padding-block-start: var(--sp-1);
+  scrollbar-color: var(--primary-base) var(--secondary-base);
+  scrollbar-width: thin;
+
+  accent-color: var(--accent-base);
+  caret-color: currentColor;
+  /* Intentional: dark mode not supported */
+  color-scheme: only light;
+
+  interpolate-size: allow-keywords;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  min-block-size: 100svb;
+  
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--secondary-base);
+  color: contrast-color(var(--secondary-base));
+  overscroll-behavior: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}

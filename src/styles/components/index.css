@@ -1,0 +1,14 @@
+/*
+ * Sub-layers are private to components.
+ * Always import components/index.css → never individual files directly.
+ * Importing files directly breaks sub-layer ordering silently.
+*/
+
+/* Components sub-layer order (lowest → highest) */
+@layer buttons, regions, structure, checking;
+
+/* Import components layers */
+@import "../components/ui/buttons.css" layer(buttons);
+@import "../components/layout/regions.css" layer(regions);
+@import "../components/blocks/structure.css" layer(structure);
+@import "../components/blocks/checking.css" layer(checking);

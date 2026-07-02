@@ -1,0 +1,32 @@
+:root {
+
+  /* Primary layers */
+  --primary-base: oklch(from #000814 calc(l * 0.3) calc(c * 1.5) calc(h + 3));
+  --primary-muted: oklch(from var(--primary-base) l c h / 0.70);
+  --primary-subtle: oklch(from var(--primary-base) l c h / 0.15);
+
+  /* Secondary layers */
+  --secondary-base: oklch(from #f8f7ff calc(l * 1.5) calc(c * 1.5) calc(h + 3));
+  --secondary-muted: oklch(from var(--secondary-base) l c h / 0.70);
+  --secondary-subtle: oklch(from var(--secondary-base) l c h / 0.15);
+
+  /* Accent layers */
+  --accent-base: oklch(from #99582a l calc(c * 1.5) calc(h + 3));
+  --accent-muted: oklch(from var(--accent-base) l c h / 0.70);
+  --accent-subtle: oklch(from var(--accent-base) l c h / 0.15);
+
+  /* Surface layers */
+  --surface-base: oklch(from #051923 calc(l * 1.1) calc(c * 1.5) calc(h + 3));
+  --surface-muted: oklch(from var(--surface-base) l c h / 0.70);
+  --surface-subtle: oklch(from var(--surface-base) l c h / 0.15);
+
+  /* Success layers */
+  --success-base: oklch(from #2bc016 calc(l * 1.3) calc(c * 1.5) calc(h + 3));
+  --success-muted: oklch(from var(--success-base) l c h / 0.70);
+  --success-subtle: oklch(from var(--success-base) l c h / 0.15);
+
+  /* Error layers */
+  --error-base: oklch(from #ff0000 calc(l * 1.4) calc(c * 1.5) calc(h + 3));
+  --error-muted: oklch(from var(--error-base) l c h / 0.70);
+  --error-subtle: oklch(from var(--error-base) l c h / 0.15);
+}

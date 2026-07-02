@@ -1,0 +1,78 @@
+@keyframes cross-fade {
+  
+  0%, 25%, 100% { 
+    opacity: 0; 
+  }
+
+  5%, 20% { 
+    opacity: 1; 
+  }
+}
+
+@keyframes shake-horizontal {
+
+  0%, 100% { 
+    translate: 0;
+  }
+
+  25% { 
+    translate: var(--rd-1);
+  } 
+
+  75% { 
+    translate: calc(-1 * var(--rd-1));
+  } 
+}
+
+/* View Transition API */
+@keyframes page-enter { 
+
+  from { 
+    opacity: 0;
+    scale: 1 0;
+  } 
+
+  to { 
+    opacity: 1;
+    scale: 1 1;
+  }
+}
+
+@keyframes page-exit { 
+
+  from {
+    opacity: .5;
+    scale: 1 1;
+  } 
+
+  to { 
+    opacity: 0;
+    scale: 1 0;
+  } 
+}
+
+@keyframes slider-enter { 
+
+  from { 
+    opacity: 0;
+    scale: 0 1;
+  } 
+
+  to { 
+    opacity: 1;
+    scale: 1 1;
+  }
+}
+
+@keyframes slider-exit { 
+
+  from {
+    opacity: .5;
+    scale: 1 1;
+  } 
+
+  to { 
+    opacity: 0;
+    scale: 0 1;
+  } 
+}

@@ -1,0 +1,38 @@
+@layer pages.create-account {
+
+  .create-account__inner {
+    flex-flow: row-reverse wrap-reverse;
+  }
+
+  .create-account-slider::after {
+    background: url("https://cdn.prod.website-files.com/5e88da4bcce5fb5debaab0e6/63163209f9b3fb4b7617953c_00_UFO_3Loops.gif") center / cover no-repeat;
+  }
+
+  .create-account-slider__item {
+
+    &:nth-child(1 of &) { 
+      --i: 0;
+      background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/3945.jpg"); 
+    }
+
+    &:nth-child(2 of &) { 
+      --i: 1;
+      background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/2878.jpg"); 
+    }
+
+    &:nth-child(3 of &) { 
+      --i: 2;
+      background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/3475.jpg");
+    }
+
+    &:nth-child(4 of &) { 
+      --i: 3;
+      background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/3685.jpg"); 
+    }
+
+    &:nth-child(5 of &) { 
+      --i: 4;
+      background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/5929.jpg"); 
+    }
+  }
+}

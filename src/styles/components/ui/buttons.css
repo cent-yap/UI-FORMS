@@ -1,0 +1,74 @@
+.btn {
+  --btn-surface: transparent;
+  --btn-fg: var(--primary-base);
+  --btn-stroke: none;
+  --btn-icon-size: calc(var(--rd-2) + var(--sz-2));
+  
+  /* Layout */
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-bd);
+  white-space: nowrap;
+  border-radius: calc(2 * var(--rd-4)); 
+  isolation: isolate;
+  overflow: clip;
+  gap: var(--rd-2);
+  padding: calc(var(--rd-2) + var(--px-3)) var(--sp-3);
+  inline-size: 100%; 
+  
+  /* Applying slots */
+  background-color: var(--btn-surface);
+  color: var(--btn-fg);
+  border: var(--btn-stroke);
+  
+  /* Explicit, high-performance transitions */
+  transition: background var(--motion-2),
+              box-shadow var(--motion-1),
+              color var(--motion-2),
+              padding var(--motion-2),
+              opacity var(--motion-2) allow-discrete,
+              scale var(--motion-2) allow-discrete,
+              transform var(--motion-2) allow-discrete;
+  
+  & svg {
+    color: inherit; 
+    transition: color var(--motion-2), 
+                transform var(--motion-2);
+    inline-size: var(--btn-icon-size);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+
+    &:not(:is(.btn--copy, .btn--link, .btn--live)):active { 
+      scale: 0.9; 
+    }
+  }
+}
+
+/* Modifier for submit variant */
+.btn--submit {
+  --btn-surface: var(--secondary-base);
+  box-shadow: var(--primary-muted) 0 var(--px-1) var(--px-2) 0;
+  will-change: scale;
+
+  &:hover {
+    --btn-fg: var(--secondary-base);
+  }
+  
+  &::before {
+    content: " ";
+    position: absolute;
+    inset: 0;
+    background-color: var(--accent-base);
+    transition: scale var(--motion-2);
+    scale: 0 1; 
+    transform-origin: left;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    scale: 1 1;
+  }
+}

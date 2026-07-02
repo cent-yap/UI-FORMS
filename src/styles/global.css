@@ -1,0 +1,24 @@
+/*
+ * GLOBAL.CSS → Core Architecture & Cascade Layer Manifest
+
+ * This file orchestrates the global cascade order using CSS Layers.
+ * Layer order defines specificity: layers declared later override those before them, 
+ * regardless of selector complexity.
+
+ * 1. theme → Low-level design tokens (colors, spacing, typography, variables).
+ * 2. base → Global resets, element defaults, and unclassed HTML tags.
+ * 3. components → Discrete, reusable UI modules (buttons, cards, nav, etc.). 
+ * 4. motion → Global keyframes, transitions, and performance optimizations.
+ * 5. pages → Specific overrides and logic for unique page-level views.
+ * 6. utilities → High-specificity, single-purpose helper classes (Atomic CSS).
+
+ * NOTE: Do NOT add page-specific styles directly here. Use the @import manifest.
+ */
+
+@layer theme, base, components, pages, motion, utilities;
+
+@import "./theme/index.css" layer(theme);
+@import "./base/index.css" layer(base);
+@import "./components/index.css" layer(components);
+@import "./motion/index.css" layer(motion);
+@import "./utilities/index.css" layer(utilities);

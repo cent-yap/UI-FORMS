@@ -1,0 +1,46 @@
+/* Layout & Sizing */
+:is(select, textarea, input:not([type="checkbox"], [type="radio"])) {
+  display: block;
+  position: relative;
+  field-sizing: content;
+  min-inline-size: 0;
+  inline-size: 100%;
+}
+
+:is(textarea, input:not([type="checkbox"], [type="radio"])) {
+  cursor: text;
+  user-select: text;
+
+  &::placeholder {
+    color: var(--primary-muted);
+    font-size: var(--fs-bd);
+  }
+
+  &:placeholder-shown {
+    overflow: clip;
+    text-overflow: ellipsis;
+  }
+
+  &::spelling-error, &::grammar-error {
+    text-decoration: underline var(--error-base) var(--bw-1);
+    text-decoration-skip-ink: all;
+    text-underline-offset: var(--bw-1);
+  }
+
+  &::spelling-error { 
+    text-decoration-style: solid; 
+  }
+
+  &::grammar-error { 
+    text-decoration-style: wavy; 
+  }
+}
+
+input:is([type="checkbox"], [type="radio"]) {
+  flex-shrink: 0;
+}
+
+fieldset {
+  border: none;
+  min-inline-size: 0;
+}

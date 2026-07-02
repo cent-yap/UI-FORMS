@@ -1,0 +1,125 @@
+/* Scoped Layout & Entry Animations */
+@scope (:is(.site-header, main, .footer)) {
+  
+  :scope {
+    isolation: isolate;
+  }
+
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    
+    :scope {
+      opacity: 1;
+      scale: 1; 
+      transition: content-visibility var(--motion-2) allow-discrete,
+                  opacity var(--motion-2),
+                  scale var(--motion-1);
+    }
+    
+    &.animating {
+      will-change: opacity, scale;
+    }
+
+    &:is(.site-header, main) { 
+      transform-origin: top center; 
+    }
+
+    &:is(.footer) { 
+      transform-origin: bottom center; 
+    }
+
+    @starting-style {
+
+      :scope {
+        opacity: 0;
+        scale: 0.95;
+      }
+    }
+  }
+}
+
+/* Skip-ahead rendering for off-screen regions */
+:is(.sidebar, .footer) {
+  contain: paint;
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--ct-lg); 
+}
+
+/* SVG Transitions (Hardware Accelerated) */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+
+  :is(a, button) :is(svg path, svg line, svg circle) {
+    transition: fill var(--motion-1),
+                stroke var(--motion-2),
+                opacity var(--motion-2),
+                translate var(--motion-3),
+                rotate var(--motion-3),
+                scale var(--motion-3);
+  }
+}
+
+/* View Transition Assignments */
+form {
+  view-transition-name: form-block;
+}
+
+[class$="-slider" i] {
+  contain: paint;
+  view-transition-name: shared-slider;
+}
+
+/* Cross-document View Transition API */
+@media (prefers-reduced-motion: no-preference) {
+
+  @view-transition {
+    navigation: auto;
+  }
+
+  html {
+
+    /* Freeze UI during transition */
+    &:active-view-transition {
+      overflow: hidden;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    &::view-transition-group(*) {
+      animation: var(--motion-expressive) forwards; 
+    }
+
+    &::view-transition-old(*),
+    &::view-transition-new(*) {
+      backface-visibility: hidden;
+      inset: 0;
+      mix-blend-mode: normal;
+      overflow: clip; 
+    }
+
+    &::view-transition-image-pair(*) { 
+      contain: content;
+      isolation: isolate;
+    }
+
+    /* Form-block */
+    &::view-transition-old(form-block) { 
+      transform-origin: bottom center;
+      animation-name: page-exit; 
+    }
+    
+    &::view-transition-new(form-block) { 
+      transform-origin: top center;
+      animation-name: page-enter; 
+    }
+    
+    /* Shared-slider */
+    &::view-transition-old(shared-slider) { 
+      transform-origin: left center;
+      animation-name: slider-exit; 
+    }
+    
+    &::view-transition-new(shared-slider) { 
+      transform-origin: right center;
+      animation-name: slider-enter; 
+    }
+  }
+}

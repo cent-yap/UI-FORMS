@@ -1,0 +1,12 @@
+/*
+ * Sub-layers are private to utilities.
+ * Always import utilities/index.css → never individual files directly.
+ * Importing files directly breaks sub-layer ordering silently.
+*/
+
+/* Utilities sub-layer order (lowest → highest) */
+@layer helpers, composition;
+
+/* Import utilities layers */
+@import "../utilities/helpers.css" layer(helpers);
+@import "../utilities/composition.css" layer(composition);

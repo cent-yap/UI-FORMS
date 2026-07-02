@@ -1,0 +1,19 @@
+/* Context-Aware Vertical Rhythm */
+.l-flow {
+
+  & > * + * {
+    margin-block-start: var(--flow-space, var(--flow-base)); 
+  }
+
+  & > * + :is(section, hr, table, figure, pre, blockquote, details) {
+    --flow-space: var(--flow-loose);
+  }
+
+  & > :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6),
+  & > figure > * + figcaption,
+  & > li + li,
+  & > dt + dd,
+  & > dd + dt {
+    --flow-space: var(--flow-tight);
+  }
+}

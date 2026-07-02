@@ -1,0 +1,25 @@
+/*  Shared grid base for landmarks */
+:is(.site-header, main, .footer, section, [class*="__container" i]) {
+  display: grid;
+  position: relative;
+  margin-inline: auto;
+  inline-size: 100%;
+}
+
+/* __container base */
+[class*="__container" i] { 
+  place-items: center;
+  overflow: clip;
+  max-inline-size: var(--w-mx); 
+}
+
+/* __inner base */
+[class*="__inner" i] {
+  display: flex;
+  align-items: stretch;
+  isolation: isolate;
+  gap: calc(2 * var(--sp-3));
+  padding-block: var(--sz-7); 
+  inline-size: calc(100% - var(--sz-6));
+  z-index: 3;
+}
